@@ -172,7 +172,7 @@ func (WikiLinkResolver) ResolveWikilink(n *wikilink.Node) ([]byte, error) {
 }
 
 func (wiki *Wiki) getPageFilePath(name string) string {
-	return filepath.Clean(fmt.Sprintf("./%s/%s.md", wiki.Dir, name))
+	return filepath.Clean(fmt.Sprintf("%s/%s.md", wiki.Dir, name))
 }
 
 func (wiki Wiki) editPage(w http.ResponseWriter, r *http.Request) {
@@ -208,7 +208,6 @@ func (wiki Wiki) editPage(w http.ResponseWriter, r *http.Request) {
 		if bcrypt.CompareHashAndPassword([]byte(wiki.PassHash), []byte(pass)) != nil {
 			// Incorrect password, show edit form again with submitted content
 			// so that nothing gets lost
-			log.Print("Incorrect password")
 			w.Header().Set("Content-Type", "text/html; charset=utf-8")
 			templatePage.Execute(w, WikiPage{
 				WikiName:     wiki.Name,
