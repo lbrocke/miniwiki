@@ -70,18 +70,6 @@ var templatePage = template.Must(template.New("edit").Funcs(template.FuncMap{
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
         color: #444;
       }
-      @media (prefers-color-scheme: dark) {
-        body {
-          color: #c9d1d9;
-          background: #0d1117;
-        }
-        a:link {
-          color:#58a6ff
-        }
-        a:visited {
-          color:#8e96f0
-        }
-      }
       a {
         color: #0066CC;
       }
@@ -112,10 +100,10 @@ var templatePage = template.Must(template.New("edit").Funcs(template.FuncMap{
       nav {
         background: #ddedff;
         padding: 1em;
-        margin-bottom: 1em
+        margin-bottom: 1em;
       }
       nav > p {
-        margin:0
+        margin: 0;
       }
       nav > ul, ol {
         padding-left: 1em;
