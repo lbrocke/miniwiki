@@ -301,7 +301,6 @@ func (wiki Wiki) showPage(w http.ResponseWriter, r *http.Request) {
 			parser.WithAutoHeadingID(),
 		),
 		goldmark.WithRendererOptions(
-			html.WithHardWraps(),
 			html.WithUnsafe(),
 		),
 	).Convert([]byte(content), &htmlBuf); err != nil {
