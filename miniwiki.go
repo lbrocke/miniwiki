@@ -93,6 +93,7 @@ var templatePage = template.Must(template.New("edit").Funcs(template.FuncMap{
         font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
         padding: .5em;
         margin: 0;
+		overflow: auto;
       }
       img {
         max-width: 100%;
@@ -324,10 +325,10 @@ func main() {
 	const DefaultPass = ""
 	const DefaultDir = "./pages/"
 
-	port := flag.Int("port", DefaultPort, "Listen port of web server")
-	name := flag.String("name", DefaultName, "Wiki name")
-	pass := flag.String("pass", DefaultPass, "Password for editing pages")
-	dir := flag.String("dir", DefaultDir, "Directory of pages files")
+	port := flag.Int("port", DefaultPort, "Listen port of web server.")
+	name := flag.String("name", DefaultName, "Name of this wiki.")
+	pass := flag.String("pass", DefaultPass, "Password for editing pages. If no password is given, editing is disabled.")
+	dir := flag.String("dir", DefaultDir, "Directory of pages markdown files.")
 	flag.Parse()
 
 	passHash, err := bcrypt.GenerateFromPassword([]byte(*pass), bcrypt.DefaultCost)
