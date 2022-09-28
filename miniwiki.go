@@ -67,7 +67,7 @@ var templatePage = template.Must(template.New("edit").Funcs(template.FuncMap{
         font-size: 1.2em;
         line-height: 1.5em;
         padding: 1em 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
+        font-family: Times New Roman, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
         color: #444;
       }
       a {
