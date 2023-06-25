@@ -319,12 +319,12 @@ func (wiki Wiki) showPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	const DefaultPort = 8080
+	const DefaultAddr = ":8080"
 	const DefaultName = "wiki"
 	const DefaultPass = ""
 	const DefaultDir = "./pages/"
 
-	port := flag.Int("port", DefaultPort, "Listen port of web server.")
+	addr := flag.String("addr", DefaultAddr, "Listen host/port address of web server.")
 	name := flag.String("name", DefaultName, "Name of this wiki.")
 	pass := flag.String("pass", DefaultPass, "Password for editing pages. If no password is given, editing is disabled.")
 	dir := flag.String("dir", DefaultDir, "Directory of pages markdown files.")
@@ -346,7 +346,9 @@ func main() {
 	http.HandleFunc("/", wiki.showPage)
 
 	if *pass == "" {
-		log.Printf("No password was given (with -pass argument), therefore page editing is disabled.")
+		log.Println("No password was given (with -pass argument), therefore page editing is disabled.")
 	}
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", *port), nil))
+
+	log.Printf("Listening on %s", *addr)
+	log.Fatal(http.ListenAndServe(*addr, nil))
 }
