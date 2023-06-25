@@ -20,4 +20,4 @@ RUN mkdir /pages
 
 ENV NAME=wiki
 
-CMD ./miniwiki -name ${NAME} -dir /pages -pass ${PASS}
+CMD ./miniwiki -name ${NAME} -dir /pages

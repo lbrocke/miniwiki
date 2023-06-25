@@ -321,16 +321,16 @@ func (wiki Wiki) showPage(w http.ResponseWriter, r *http.Request) {
 func main() {
 	const DefaultAddr = ":8080"
 	const DefaultName = "wiki"
-	const DefaultPass = ""
 	const DefaultDir = "./pages/"
 
 	addr := flag.String("addr", DefaultAddr, "Listen host/port address of web server.")
 	name := flag.String("name", DefaultName, "Name of this wiki.")
-	pass := flag.String("pass", DefaultPass, "Password for editing pages. If no password is given, editing is disabled.")
 	dir := flag.String("dir", DefaultDir, "Directory of pages markdown files.")
 	flag.Parse()
 
-	passHash, err := bcrypt.GenerateFromPassword([]byte(*pass), bcrypt.DefaultCost)
+	pass := os.Getenv("PASS")
+
+	passHash, err := bcrypt.GenerateFromPassword([]byte(pass), bcrypt.DefaultCost)
 	if err != nil {
 		panic("Could not hash given password.")
 	}
@@ -338,14 +338,14 @@ func main() {
 	wiki := Wiki{
 		Name:     *name,
 		PassHash: string(passHash),
-		Editable: *pass != DefaultPass,
+		Editable: pass != "",
 		Dir:      *dir,
 	}
 
 	http.HandleFunc("/e/", wiki.editPage)
 	http.HandleFunc("/", wiki.showPage)
 
-	if *pass == "" {
+	if pass == "" {
 		log.Println("No password was given (with -pass argument), therefore page editing is disabled.")
 	}
 
