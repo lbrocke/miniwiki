@@ -346,7 +346,7 @@ func main() {
 	http.HandleFunc("/", wiki.showPage)
 
 	if pass == "" {
-		log.Println("No password was given (with -pass argument), therefore page editing is disabled.")
+		log.Println("No password was given (with PASS env. variable), therefore page editing is disabled.")
 	}
 
 	log.Printf("Listening on %s", *addr)
