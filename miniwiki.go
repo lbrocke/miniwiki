@@ -13,11 +13,11 @@ import (
 	"regexp"
 	"strings"
 
-	wikilink "github.com/abhinav/goldmark-wikilink"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/renderer/html"
+	wikilink "go.abhg.dev/goldmark/wikilink"
 	"golang.org/x/crypto/bcrypt"
 )
 
