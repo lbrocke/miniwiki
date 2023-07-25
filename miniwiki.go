@@ -319,7 +319,7 @@ func (wiki Wiki) showPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	const DefaultAddr = ":8080"
+	const DefaultAddr = "127.0.0.1:8080"
 	const DefaultName = "wiki"
 	const DefaultDir = "./pages/"
 
