@@ -26,12 +26,13 @@ To enable page editing, set the `PASS` environment variable to some good passwor
 Either using Docker:
 
 ```
+$ docker build -t miniwiki .
 $ docker run \
     -e "PASS=changeme" \
     -e "NAME=mywiki" \
     -p 127.0.0.1:8080:80 \
     -v ./pages:/pages \
-    ghcr.io/lbrocke/miniwiki:latest
+    miniwiki
 ```
 
 or from source:

@@ -21,7 +21,7 @@ This is a navigation block.
 
 ![Image](https://commonmark.org/help/images/favicon.png)
 
-> Blockquote 
+> Blockquote
 
 * List
 * List
